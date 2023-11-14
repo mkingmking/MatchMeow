@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'AddPetPage.dart';
 import 'PetListPage.dart';
+import 'addUserPage.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -14,6 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = [
     PetListPage(),
     AddPetPage(),
+    AddUserPage(),
   ];
 
   @override
@@ -38,6 +40,10 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.add),
             label: 'Add Pet',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person), // Add a user icon
+            label: 'Add User',
           ),
         ],
       ),

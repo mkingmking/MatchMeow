@@ -1,9 +1,13 @@
+import 'UserAdress.dart';
+
 class User {
   String name;
   String surname;
   String email;
   String sex;
   int age;
+  UserAddress address;
+  String userID;
 
   User({
     required this.name,
@@ -11,6 +15,8 @@ class User {
     required this.email,
     required this.sex,
     required this.age,
+    required this.address,
+    required this.userID,
   });
 
   // Factory method to create User from a Map (database data)
@@ -21,6 +27,15 @@ class User {
       email: json['email'],
       sex: json['sex'],
       age: json['age'],
+      address: json['address'] != null
+          ? UserAddress.fromJson(json['address'])
+          : UserAddress(
+              street: '',
+              city: '',
+              state: '',
+              postalCode: '',
+            ), // Assuming UserAddress has an empty constructor
+      userID: json['userID'],
     );
   }
 
@@ -32,6 +47,8 @@ class User {
       'email': email,
       'sex': sex,
       'age': age,
+      'userID': userID,
+      'address': address.toJson(),
     };
   }
 }
