@@ -50,8 +50,8 @@ class _PetListPageState extends State<PetListPage> {
         itemCount: petList.length,
         itemBuilder: (context, index) {
           return ListTile(
-            title: Text(petList[index].ad),
-            subtitle: Text(petList[index].tur),
+            title: Text(petList[index].name),
+            subtitle: Text(petList[index].type),
             // Add more details based on your UI requirements
           );
         },

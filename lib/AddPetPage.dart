@@ -18,15 +18,15 @@ class _AddPetPageState extends State<AddPetPage> {
   void _addPetToDatabase() {
     // Create an EvcilHayvan object
     EvcilHayvan newPet = EvcilHayvan(
-      ad: _nameController.text,
-      tur: _speciesController.text,
-      yas: int.tryParse(_ageController.text) ?? 0,
-      karakteristikler: [], // TODO: bunlar icin de buton ekle
-      renk: "SampleColor", // TODO:
-      cinsiyet: "SampleGender", // TODO:
-      cinsi: "SampleBreed", // TODO:
-      kisirlastirilmis: false, // TODO:
-      ozelBakimDurumu: "SampleSpecialCare", // TODO:
+      name: _nameController.text,
+      type: _speciesController.text,
+      age: int.tryParse(_ageController.text) ?? 0,
+      characteristics: [], // TODO: bunlar icin de buton ekle
+      color: "SampleColor", // TODO:
+      sex: "SampleGender", // TODO:
+      breed: "SampleBreed", // TODO:
+      castrated: false, // TODO:
+      specialNeed: "SampleSpecialCare", // TODO:
     );
 
     // Write the pet to the database
@@ -47,7 +47,7 @@ class _AddPetPageState extends State<AddPetPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add a Pet'),
+        title: const Text('Add a Pet'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

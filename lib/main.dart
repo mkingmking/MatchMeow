@@ -12,7 +12,6 @@ void main() async {
   runApp(MyApp());
 }
 
-//zort
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
