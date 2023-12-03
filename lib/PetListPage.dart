@@ -27,14 +27,16 @@ class _PetListPageState extends State<PetListPage> {
 
         if (map != null) {
           List<EvcilHayvan> newList = [];
+
           map.forEach((key, value) {
-            newList.add(EvcilHayvan.fromJson(value));
+            // problem here!
+            //newList.add(EvcilHayvan.fromJson(value));
           });
 
           // Update the UI with the new list of pets
-          setState(() {
-            petList = newList;
-          });
+          //setState(() {
+          petList = newList;
+          //});
         }
       }
     });
@@ -43,19 +45,20 @@ class _PetListPageState extends State<PetListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Pet List'),
-      ),
-      body: ListView.builder(
-        itemCount: petList.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(petList[index].name),
-            subtitle: Text(petList[index].type),
-            // Add more details based on your UI requirements
-          );
-        },
-      ),
-    );
+        appBar: AppBar(
+          title: Text('Pet List'),
+        ),
+        body: Container(
+          child: ListView.builder(
+            itemCount: petList.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(petList[index].name),
+                subtitle: Text(petList[index].type),
+                // Add more details based on your UI requirements
+              );
+            },
+          ),
+        ));
   }
 }

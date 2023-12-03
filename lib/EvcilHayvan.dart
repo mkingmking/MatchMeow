@@ -98,18 +98,18 @@ class EvcilHayvan {
         _castrated = castrated,
         _specialNeed = specialNeed;
 
-  // Fabrika metodu: JSON'dan Nesneye dönüştürme
   factory EvcilHayvan.fromJson(Map<String, dynamic> json) {
     return EvcilHayvan(
-      name: json['name'],
-      breed: json['breed'],
-      age: json['age'],
-      characteristics: List<String>.from(json['characteristics']),
-      color: json['color'],
-      sex: json['sex'],
-      type: json['type'],
-      castrated: json['castrated'],
-      specialNeed: json['specialNeed'],
+      name: json['name'] ?? '', // default to empty string if null
+      breed: json['breed'] ?? '', // default to empty string if null
+      age: json['age'] ?? 0, // default to 0 if null
+      characteristics: List<String>.from(
+          json['characteristics'] ?? []), // default to empty list if null
+      color: json['color'] ?? '', // default to empty string if null
+      sex: json['sex'] ?? '', // default to empty string if null
+      type: json['type'] ?? '', // default to empty string if null
+      castrated: json['castrated'] ?? false, // default to false if null
+      specialNeed: json['specialNeed'] ?? '', // default to empty string if null
     );
   }
 
