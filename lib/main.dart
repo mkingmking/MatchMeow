@@ -1,27 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'firebase_options.dart';
-import 'HomeScreen.dart';
-import 'User.dart';
+import 'onboardingScreen.dart' as onboarding_screen;
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+  runApp(
+    const MaterialApp(
+        home: Scaffold(
+      body: onboarding_screen.OnboardingScreen(),
+    )),
   );
-  runApp(MyApp());
 }
 
-//zort
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'MatchMeow',
-      theme: ThemeData(
-        primarySwatch: Colors.pink,
-      ),
-      home: HomeScreen(),
-    );
-  }
-}
+// Image.asset('assets/gifs/cat-dog-hello.GIF'),
