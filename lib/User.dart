@@ -25,7 +25,7 @@ class User {
     List<String>? swipedRight, // New optional field
   })  : petHashes = petHashes ?? [], // Default to an empty list if null
         swipedRight = swipedRight ?? []; // Default to an empty list if null
-
+/*
   // Factory method to create User from a Map (database data)
   factory User.fromJson(Map<dynamic, dynamic> json) {
     return User(
@@ -45,6 +45,33 @@ class User {
       userID: json['userID'],
       petHashes: json['petHashes']?.cast<String>() ?? [], // Existing field
       swipedRight: json['swipedRight']?.cast<String>() ?? [], // New field
+    );
+  } */
+
+// Factory method to create User from a Map (database data)
+  factory User.fromJson(Map<dynamic, dynamic> json) {
+    return User(
+      name: json['name'] ?? 'Default Name', // Provide a default value if null
+      surname: json['surname'] ??
+          'Default Surname', // Provide a default value if null
+      email: json['email'] ??
+          'default@email.com', // Provide a default value if null
+      sex: json['sex'] ?? 'Unknown', // Provide a default value if null
+      age: json['age'] ?? 0, // Default to 0 if null
+      address: json['address'] != null
+          ? UserAddress.fromJson(json['address'])
+          : UserAddress(
+              street: '',
+              city: '',
+              state: '',
+              postalCode: '',
+            ), // Assuming UserAddress has an empty constructor
+      userID:
+          json['userID'] ?? 'defaultUserID', // Provide a default value if null
+      petHashes:
+          json['petHashes']?.cast<String>() ?? [], // Handle potential null
+      swipedRight:
+          json['swipedRight']?.cast<String>() ?? [], // Handle potential null
     );
   }
 

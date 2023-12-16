@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'AddPetPage.dart';
 import 'PetListPage.dart';
 import 'addUserPage.dart';
+import 'UserListPage.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -16,6 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
     PetListPage(),
     AddPetPage(),
     AddUserPage(),
+    UserListPage(), // Add the UserListPage here
   ];
 
   @override
@@ -32,6 +34,12 @@ class _HomeScreenState extends State<HomeScreen> {
             _currentIndex = index;
           });
         },
+
+        backgroundColor: Colors.red, // Set the background color to red
+        selectedItemColor: const Color.fromARGB(
+            255, 122, 31, 31), // Optional: Set the selected item color
+        unselectedItemColor: const Color.fromARGB(
+            179, 118, 15, 15), // Optional: Set the unselected item
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
@@ -42,8 +50,12 @@ class _HomeScreenState extends State<HomeScreen> {
             label: 'Add Pet',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person), // Add a user icon
+            icon: Icon(Icons.person),
             label: 'Add User',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.view_list), // Icon for user list
+            label: 'User List',
           ),
         ],
       ),
