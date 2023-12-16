@@ -20,7 +20,6 @@ class _PetListPageState extends State<PetListPage> {
     // Set up a listener for real-time updates
 
     _databaseReference.onValue.listen((DatabaseEvent event) {
-      // Handle data changes
       if (event.snapshot.value != null) {
         Map<dynamic, dynamic>? map =
             event.snapshot.value as Map<dynamic, dynamic>?;
@@ -29,14 +28,14 @@ class _PetListPageState extends State<PetListPage> {
           List<EvcilHayvan> newList = [];
 
           map.forEach((key, value) {
-            // problem here!
-            //newList.add(EvcilHayvan.fromJson(value));
+            // Convert value to Map<String, dynamic>
+            Map<String, dynamic> petData = Map<String, dynamic>.from(value);
+            newList.add(EvcilHayvan.fromJson(petData));
           });
 
-          // Update the UI with the new list of pets
-          //setState(() {
-          petList = newList;
-          //});
+          setState(() {
+            petList = newList;
+          });
         }
       }
     });
