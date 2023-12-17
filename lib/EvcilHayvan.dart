@@ -2,6 +2,12 @@
 //import 'package:firebase_database/firebase_database.dart';
 
 class EvcilHayvan {
+  String _imageUrl;
+
+  String get imageUrl => _imageUrl;
+
+  set imageUrl(String value) => _imageUrl = value;
+
   String _name;
 
   String get name => _name;
@@ -74,10 +80,6 @@ class EvcilHayvan {
     _specialNeed = value;
   }
 
-  //late DatabaseReference ref = FirebaseDatabase.instance.ref();
-
-  //DatabaseReference ref = FirebaseDatabase.instance.ref("users/123");
-
   EvcilHayvan({
     required String name,
     required String breed,
@@ -88,6 +90,7 @@ class EvcilHayvan {
     required String type,
     required bool castrated,
     required String specialNeed,
+    String imageUrl = '',
   })  : _name = name,
         _breed = breed,
         _age = age,
@@ -96,7 +99,8 @@ class EvcilHayvan {
         _sex = sex,
         _type = type,
         _castrated = castrated,
-        _specialNeed = specialNeed;
+        _specialNeed = specialNeed,
+        _imageUrl = imageUrl;
 
   factory EvcilHayvan.fromJson(Map<String, dynamic> json) {
     return EvcilHayvan(
@@ -110,6 +114,7 @@ class EvcilHayvan {
       type: json['type'] ?? '', // default to empty string if null
       castrated: json['castrated'] ?? false, // default to false if null
       specialNeed: json['specialNeed'] ?? '', // default to empty string if null
+      imageUrl: json['imageUrl'] ?? '',
     );
   }
 
@@ -125,6 +130,7 @@ class EvcilHayvan {
       'type': type,
       'castrated': castrated,
       'specialNeed': specialNeed,
+      'imageUrl': _imageUrl,
     };
   }
 }
