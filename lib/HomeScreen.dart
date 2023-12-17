@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:proje1/newsPage.dart';
 import 'AddPetPage.dart';
 import 'PetListPage.dart';
 import 'addUserPage.dart';
 import 'UserListPage.dart';
+import 'newsPage.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -17,7 +19,8 @@ class _HomeScreenState extends State<HomeScreen> {
     PetListPage(),
     AddPetPage(),
     AddUserPage(),
-    UserListPage(), // Add the UserListPage here
+    UserListPage(),
+    NewsPage(),
   ];
 
   @override
@@ -40,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
             255, 122, 31, 31), // Optional: Set the selected item color
         unselectedItemColor: const Color.fromARGB(
             179, 118, 15, 15), // Optional: Set the unselected item
+
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.list),
@@ -56,6 +60,10 @@ class _HomeScreenState extends State<HomeScreen> {
           BottomNavigationBarItem(
             icon: Icon(Icons.view_list), // Icon for user list
             label: 'User List',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.newspaper),
+            label: 'News',
           ),
         ],
       ),
