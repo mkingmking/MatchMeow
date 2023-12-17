@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'HomeScreen.dart';
 
 class LoginPage extends StatelessWidget {
-  @override // Corrected annotation with a lowercase 'o'
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
@@ -25,6 +29,7 @@ class LoginPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    controller: emailController,
                     decoration: InputDecoration(
                       labelText: 'Mail',
                       labelStyle: TextStyle(
@@ -59,6 +64,7 @@ class LoginPage extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
+                    controller: passwordController,
                     decoration: InputDecoration(
                       labelText: 'Şifre',
                       labelStyle: TextStyle(
@@ -93,10 +99,39 @@ class LoginPage extends StatelessWidget {
 
                 ElevatedButton(
                   child: Text('Giriş Yap'),
-                  onPressed: () {
-                    // Implement login logic, probably with Firebase Auth
+                  onPressed: () async {
+                    try {
+                      // Replace these with the actual user input values
+
+                      String email = emailController.text;
+                      String password = passwordController.text;
+
+                      // Firebase Auth sign in
+                      UserCredential userCredential = await FirebaseAuth
+                          .instance
+                          .signInWithEmailAndPassword(
+                        email: email,
+                        password: password,
+                      );
+
+                      // Navigate to HomeScreen or another page upon successful login
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => HomeScreen()),
+                      );
+                    } on FirebaseAuthException catch (e) {
+                      // Handle different FirebaseAuth errors here
+                      if (e.code == 'user-not-found') {
+                        print('No user found for that email.');
+                      } else if (e.code == 'wrong-password') {
+                        print('Wrong password provided for that user.');
+                      }
+                    } catch (e) {
+                      print(e); // Handle other errors
+                    }
                   },
                 ),
+
                 TextButton(
                   style: TextButton.styleFrom(
                     primary: const Color.fromARGB(
