@@ -87,7 +87,7 @@ print(recommendations)
 
 
 # Example user ID and recommended pet hashes
-user_id = '-NlmXg0BuNn4s67r8qrM'
+user_id = '-NmFlcefV1l5tDoeyatU'
 
 
 # Update the user's data in Firebase
