@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proje1/onboardingScreen.dart';
 import 'user.dart';
 import 'UserAdress.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -100,6 +101,13 @@ class _AddUserPageState extends State<AddUserPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add User'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => OnboardingScreen()));
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

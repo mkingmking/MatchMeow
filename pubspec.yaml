@@ -36,6 +36,7 @@ dependencies:
   firebase_auth: ^4.14.0
   firebase_storage: ^11.5.1
   image_picker: ^1.0.0
+  swipable_stack: ^2.0.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -65,6 +66,8 @@ flutter:
   assets:
     - arayuz/
     - kedi_resimleri/
+    - assets/gifs/cat-dog-hello.GIF
+    - assets/gifs/cat-donation.gif
 
   # To add assets to your application, add an assets section, like this:
   # assets:

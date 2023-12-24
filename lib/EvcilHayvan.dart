@@ -114,7 +114,8 @@ class EvcilHayvan {
       type: json['type'] ?? '', // default to empty string if null
       castrated: json['castrated'] ?? false, // default to false if null
       specialNeed: json['specialNeed'] ?? '', // default to empty string if null
-      imageUrl: json['imageUrl'] ?? '',
+      imageUrl: json['imageUrl'] ??
+          "https://firebasestorage.googleapis.com/v0/b/matchmeow-aebe7.appspot.com/o/pets%2F1703413286124_1000000033.jpg?alt=media&token=51f61346-0206-4925-99a9-f9ec48f8e704",
     );
   }
 
@@ -130,7 +131,7 @@ class EvcilHayvan {
       'type': type,
       'castrated': castrated,
       'specialNeed': specialNeed,
-      'imageUrl': _imageUrl,
+      'imageUrl': imageUrl,
     };
   }
 }
