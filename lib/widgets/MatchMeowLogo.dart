@@ -11,7 +11,8 @@ class Logo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: isBg ? local_colors.darkGrayColor : null,
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(vertical: 10),
+      alignment: Alignment.center,
       child: Text(
         'MatchMeow',
         style: TextStyle(

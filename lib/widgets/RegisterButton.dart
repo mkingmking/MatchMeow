@@ -7,7 +7,7 @@ class RegisterButton extends StatelessWidget {
   final String buttonText;
 
   @override
-  Widget build(context) {
+  Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -17,17 +17,29 @@ class RegisterButton extends StatelessWidget {
         ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-          child: OutlinedButton(
-            onPressed: null,
-            style: ButtonStyle(
-              shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30.0))),
-              side: MaterialStateProperty.all(const BorderSide(
-                  color: local_colors
-                      .whiteColor)), // Set the outline color to white
+          child: Material(
+            borderRadius: BorderRadius.circular(30.0),
+            color: Colors.transparent,
+            child: InkWell(
+              onTap: () {
+                // Handle button tap
+              },
+              borderRadius: BorderRadius.circular(30.0),
+              child: Ink(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30.0),
+                  border: Border.all(color: local_colors.whiteColor),
+                ),
+                child: Container(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  child: Text(
+                    buttonText,
+                    style: const TextStyle(color: local_colors.whiteColor),
+                  ),
+                ),
+              ),
             ),
-            child: Text(buttonText,
-                style: const TextStyle(color: local_colors.whiteColor)),
           ),
         ),
       ],
