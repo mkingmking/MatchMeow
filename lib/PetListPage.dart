@@ -45,7 +45,7 @@ class _PetListPageState extends State<PetListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Pet List'),
+          title: Text('Manuel Arama'),
         ),
         body: Container(
           child: ListView.builder(

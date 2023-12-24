@@ -55,7 +55,7 @@ class NewsPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('News'),
+          title: Text('Evcil Hayvan Haberleri'),
           backgroundColor: mainColor,
         ),
         body: ListView.builder(

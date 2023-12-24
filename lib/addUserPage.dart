@@ -100,7 +100,7 @@ class _AddUserPageState extends State<AddUserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Add User'),
+        title: Text('Kayıt Ol'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
@@ -115,15 +115,15 @@ class _AddUserPageState extends State<AddUserPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('User Information',
+              Text('Kullanıcı Bilgisi',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               TextFormField(
                 controller: nameController,
-                decoration: InputDecoration(labelText: 'Name'),
+                decoration: InputDecoration(labelText: 'İsim'),
               ),
               TextFormField(
                 controller: surnameController,
-                decoration: InputDecoration(labelText: 'Surname'),
+                decoration: InputDecoration(labelText: 'Soyisim'),
               ),
               TextFormField(
                 controller: emailController,
@@ -131,37 +131,37 @@ class _AddUserPageState extends State<AddUserPage> {
               ),
               TextFormField(
                 controller: passwordController,
-                decoration: InputDecoration(labelText: 'Password'),
+                decoration: InputDecoration(labelText: 'Şifre'),
                 obscureText: true, // Hide the password input
               ),
               TextFormField(
                 controller: sexController,
-                decoration: InputDecoration(labelText: 'Sex'),
+                decoration: InputDecoration(labelText: 'Cinsiyet'),
               ),
               TextFormField(
                 controller: ageController,
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(labelText: 'Age'),
+                decoration: InputDecoration(labelText: 'Yaş'),
               ),
               SizedBox(height: 20),
               Text('Addresses',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               TextFormField(
                 controller: streetController,
-                decoration: InputDecoration(labelText: 'Street'),
+                decoration: InputDecoration(labelText: 'Sokak'),
               ),
               TextFormField(
                 controller: cityController,
-                decoration: InputDecoration(labelText: 'City'),
+                decoration: InputDecoration(labelText: 'Şehir'),
               ),
               TextFormField(
                 controller: stateController,
-                decoration: InputDecoration(labelText: 'State'),
+                decoration: InputDecoration(labelText: 'Bölge'),
               ),
               TextFormField(
                 controller: postalCodeController,
                 keyboardType: TextInputType.number,
-                decoration: InputDecoration(labelText: 'Postal Code'),
+                decoration: InputDecoration(labelText: 'Posta Kodu'),
               ),
               SizedBox(height: 20),
               ElevatedButton(
@@ -175,12 +175,12 @@ class _AddUserPageState extends State<AddUserPage> {
                   stateController.clear();
                   postalCodeController.clear();
                 },
-                child: const Text('Add Address'),
+                child: const Text('Adres Ekle'),
               ),
               SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _registerUser,
-                child: Text('Add User'),
+                child: Text('Kayıt Ol'),
               ),
             ],
           ),

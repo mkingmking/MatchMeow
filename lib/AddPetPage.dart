@@ -115,7 +115,7 @@ class _AddPetPageState extends State<AddPetPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Add a Pet'),
+        title: const Text('İlan Ver'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -125,24 +125,24 @@ class _AddPetPageState extends State<AddPetPage> {
             children: [
               TextField(
                 controller: _nameController,
-                decoration: InputDecoration(labelText: 'Pet Name'),
+                decoration: InputDecoration(labelText: 'Hayvan ismi'),
               ),
               TextField(
                 controller: _speciesController,
-                decoration: InputDecoration(labelText: 'Species'),
+                decoration: InputDecoration(labelText: 'Türü (Kedi/Köpek)'),
               ),
               TextField(
                 controller: _ageController,
-                decoration: InputDecoration(labelText: 'Age'),
+                decoration: InputDecoration(labelText: 'Yaş'),
                 keyboardType: TextInputType.number,
               ),
               TextField(
                 controller: _colorController,
-                decoration: InputDecoration(labelText: 'Color'),
+                decoration: InputDecoration(labelText: 'Renk'),
               ),
               TextField(
                 controller: _breedController,
-                decoration: InputDecoration(labelText: 'Breed'),
+                decoration: InputDecoration(labelText: 'Cinsi'),
               ),
               DropdownButton<String>(
                 value: _sex,
@@ -160,7 +160,7 @@ class _AddPetPageState extends State<AddPetPage> {
                 }).toList(),
               ),
               SwitchListTile(
-                title: const Text('Castrated'),
+                title: const Text('Kısır mı'),
                 value: _castrated,
                 onChanged: (bool value) {
                   setState(() {
@@ -170,18 +170,18 @@ class _AddPetPageState extends State<AddPetPage> {
               ),
               TextField(
                 controller: _specialNeedController,
-                decoration: InputDecoration(labelText: 'Special Care Needs'),
+                decoration: InputDecoration(labelText: 'Özel İhtiyacı var mı?'),
               ),
               _buildCharacteristicsChips(),
               SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: _pickImage,
-                child: Text('Pick Pet Image'),
+                child: Text('Resim Yükle'),
               ),
               SizedBox(height: 16.0),
               ElevatedButton(
                 onPressed: _addPetToDatabase,
-                child: Text('Add Pet'),
+                child: Text('Kaydet'),
               ),
             ],
           ),
