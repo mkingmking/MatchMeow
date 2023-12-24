@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../constants/colors.dart' as local_colors;
 import '../AddPetNoticeForm.dart' as add_pet_notice_screen;
 import '../PetInformationForm.dart' as pet_form_screen;
+import '../SwipeScreen.dart' as swipe_screen;
 
 class NoticeAndSearchButtons extends StatelessWidget {
   const NoticeAndSearchButtons({super.key});
@@ -50,7 +51,7 @@ class NoticeAndSearchButtons extends StatelessWidget {
                       local_colors.whiteColor,
                       local_colors.mainColor,
                       context,
-                      add_pet_notice_screen.MyFormScreen()),
+                      swipe_screen.SwipeScreen()),
                 ),
                 const SizedBox(
                   height: 4,
