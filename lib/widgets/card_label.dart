@@ -15,8 +15,8 @@ class CardLabel extends StatelessWidget {
 
   factory CardLabel.right() {
     return const CardLabel._(
-      color: local_colors.lightPinkColor,
-      label: 'RIGHT',
+      color: Colors.green,
+      label: '✔',
       angle: -_labelAngle,
       alignment: Alignment.topLeft,
     );
@@ -24,8 +24,8 @@ class CardLabel extends StatelessWidget {
 
   factory CardLabel.left() {
     return const CardLabel._(
-      color: local_colors.lightGrayColor,
-      label: 'LEFT',
+      color: Colors.red,
+      label: '✘',
       angle: _labelAngle,
       alignment: Alignment.topRight,
     );
@@ -59,25 +59,21 @@ class CardLabel extends StatelessWidget {
     return Container(
       alignment: alignment,
       padding: const EdgeInsets.symmetric(
-        vertical: 36,
-        horizontal: 36,
+        vertical: 20,
+        horizontal: 20,
       ),
       child: Transform.rotate(
         angle: angle,
         child: Container(
           decoration: BoxDecoration(
-            border: Border.all(
-              color: color,
-              width: 4,
-            ),
-            color: Colors.white,
+            color: Colors.transparent,
             borderRadius: BorderRadius.circular(4),
           ),
           padding: const EdgeInsets.all(6),
           child: Text(
             label,
             style: TextStyle(
-              fontSize: 32,
+              fontSize: 50,
               fontWeight: FontWeight.w600,
               letterSpacing: 1.4,
               color: color,

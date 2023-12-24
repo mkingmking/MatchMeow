@@ -6,9 +6,9 @@ import 'package:flutter/material.dart';
 import 'package:swipable_stack/swipable_stack.dart';
 
 const _images = [
-  '../images/image_5.jpg',
-  '../images/image_3.jpg',
-  '../images/image_4.jpg',
+  './images/image_5.jpg',
+  './images/image_3.jpg',
+  './images/image_4.jpg',
 ];
 
 class SwipeScreen extends StatefulWidget {
@@ -85,6 +85,12 @@ class _SwipeScreenState extends State<SwipeScreen> {
                     final itemIndex = properties.index % _images.length;
                     return ExampleCard(
                       name: 'Sample No.${itemIndex + 1}',
+                      sex: 'Erkek',
+                      age: 4,
+                      castrated: true,
+                      healthProblems: true,
+                      character: '',
+                      info: '',
                       assetPath: _images[itemIndex],
                     );
                   },
