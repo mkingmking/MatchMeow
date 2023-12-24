@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:proje1/onboardingScreen.dart';
 import 'user.dart';
 import 'UserAdress.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart' as auth;
 
 class AddUserPage extends StatefulWidget {
   @override
@@ -19,20 +21,43 @@ class _AddUserPageState extends State<AddUserPage> {
   TextEditingController cityController = TextEditingController();
   TextEditingController stateController = TextEditingController();
   TextEditingController postalCodeController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
   late UserAddress address;
 
   void _addAddressToDatabase(UserAddress userAddress, String userId) {
     DatabaseReference addressRef = FirebaseDatabase.instance
         .ref()
-        .child('users') //TODO  doesn't work as intended.
+        .child('users')
         .child(userId)
         .child('address');
 
     addressRef.set(userAddress.toJson());
   }
 
-  void _addUserToDatabase() {
+  void _registerUser() async {
+    try {
+      auth.UserCredential userCredential =
+          await auth.FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text,
+      );
+
+      if (userCredential.user != null) {
+        // User is successfully created, proceed with adding to database
+        _addUserToDatabase(userCredential.user!.uid);
+      } else {
+        // Handle the case where the user is null
+        print('User creation failed');
+      }
+    } on auth.FirebaseAuthException catch (e) {
+      print(e.message);
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void _addUserToDatabase(String userId) {
     // Create a User object
     UserAddress newAdress = UserAddress(
         street: streetController.text,
@@ -47,7 +72,7 @@ class _AddUserPageState extends State<AddUserPage> {
       sex: sexController.text,
       age: int.tryParse(ageController.text) ?? 0,
       address: newAdress,
-      userID: 'test',
+      userID: userId,
     );
 
     // Write the user to the database
@@ -55,7 +80,7 @@ class _AddUserPageState extends State<AddUserPage> {
         FirebaseDatabase.instance.ref().child('users').push();
     userRef.set(newUser.toJson());
 
-    _addAddressToDatabase(newAdress, newUser.userID);
+    // _addAddressToDatabase(newAdress, newUser.userID);
 
     // ... Clear other text controllers
     // Clear all input fields
@@ -68,6 +93,7 @@ class _AddUserPageState extends State<AddUserPage> {
     cityController.clear();
     stateController.clear();
     postalCodeController.clear();
+    passwordController.clear();
   }
 
   @override
@@ -75,6 +101,13 @@ class _AddUserPageState extends State<AddUserPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Add User'),
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pushReplacement(
+                MaterialPageRoute(builder: (context) => OnboardingScreen()));
+          },
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -95,6 +128,11 @@ class _AddUserPageState extends State<AddUserPage> {
               TextFormField(
                 controller: emailController,
                 decoration: InputDecoration(labelText: 'Email'),
+              ),
+              TextFormField(
+                controller: passwordController,
+                decoration: InputDecoration(labelText: 'Password'),
+                obscureText: true, // Hide the password input
               ),
               TextFormField(
                 controller: sexController,
@@ -141,7 +179,7 @@ class _AddUserPageState extends State<AddUserPage> {
               ),
               SizedBox(height: 20),
               ElevatedButton(
-                onPressed: _addUserToDatabase, // Corrected
+                onPressed: _registerUser,
                 child: Text('Add User'),
               ),
             ],

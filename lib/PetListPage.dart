@@ -20,18 +20,19 @@ class _PetListPageState extends State<PetListPage> {
     // Set up a listener for real-time updates
 
     _databaseReference.onValue.listen((DatabaseEvent event) {
-      // Handle data changes
       if (event.snapshot.value != null) {
         Map<dynamic, dynamic>? map =
             event.snapshot.value as Map<dynamic, dynamic>?;
 
         if (map != null) {
           List<EvcilHayvan> newList = [];
+
           map.forEach((key, value) {
-            newList.add(EvcilHayvan.fromJson(value));
+            // Convert value to Map<String, dynamic>
+            Map<String, dynamic> petData = Map<String, dynamic>.from(value);
+            newList.add(EvcilHayvan.fromJson(petData));
           });
 
-          // Update the UI with the new list of pets
           setState(() {
             petList = newList;
           });
@@ -43,19 +44,20 @@ class _PetListPageState extends State<PetListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Pet List'),
-      ),
-      body: ListView.builder(
-        itemCount: petList.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(petList[index].ad),
-            subtitle: Text(petList[index].tur),
-            // Add more details based on your UI requirements
-          );
-        },
-      ),
-    );
+        appBar: AppBar(
+          title: Text('Pet List'),
+        ),
+        body: Container(
+          child: ListView.builder(
+            itemCount: petList.length,
+            itemBuilder: (context, index) {
+              return ListTile(
+                title: Text(petList[index].name),
+                subtitle: Text(petList[index].type),
+                // Add more details based on your UI requirements
+              );
+            },
+          ),
+        ));
   }
 }
